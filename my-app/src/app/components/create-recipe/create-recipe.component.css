@@ -1,0 +1,7 @@
+form{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    top: 75px;
+}

@@ -1,0 +1,38 @@
+
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="recipeName">Название рецепта:</label>
+    <input type="text" id="recipeName" [(ngModel)]="recipe.title" name="name" required>
+  </div>
+  @for( ingredient of recipe.ingredients;track recipe.ingredients){
+      <h3>Ингредиент {{recipe.id}}</h3>
+      <label for="ingredientName">Название:</label>
+      <input type="text" [(ngModel)]="ingredient.name"  required>
+  
+      <label for="ingredientAmount">Количество:</label>
+      <input type="number" [(ngModel)]="ingredient.quantity"  required>
+  
+      <label for="ingredientUnit">Единица измерения:</label>
+      <select [(ngModel)]="ingredient.unit"  required>
+        <option *ngFor="let unit of units" [value]="unit">{{unit}}</option>
+      </select>
+  
+      <!-- <button type="button" (click)="removeIngredient(i)">Удалить ингредиент</button> -->
+
+  }
+
+  <button type="button" (click)="addIngredient()">Добавить ингредиент</button>
+
+  <div>
+    <label for="instructions">Описание процесса приготовления:</label>
+    <textarea id="instructions" [(ngModel)]="recipe.instructions" name="instructions" required></textarea>
+  </div>
+
+  <div>
+    <label for="image">Картинка рецепта:</label>
+    <input type="file" (change)="onImageSelected($event)">
+  </div>
+
+  <button type="submit">Сохранить рецепт</button>
+</form>
+
